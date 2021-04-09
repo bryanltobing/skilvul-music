@@ -12,7 +12,7 @@ interface IParams {
 
 export interface ITrack {
   name: string;
-
+  id: string;
   album: {
     images: {
       height: number;
@@ -24,7 +24,6 @@ export interface ITrack {
 
 export interface IPLaylistTrack {
   track: ITrack;
-  id: string;
 }
 
 const PlaylistTrackContainer = () => {
@@ -38,6 +37,16 @@ const PlaylistTrackContainer = () => {
     });
   }, [params]);
 
+  const handleDeleteOne = (id: string) => {
+    const spreadTheData = [...playlistTrack];
+
+    const newData = spreadTheData?.filter((data) => {
+      return data.track.id !== id;
+    });
+
+    setPlaylistTrack(newData);
+  };
+
   return (
     <Stack marginY={4} spacing={6}>
       <Button onClick={() => history.goBack()} fontSize="1.6rem">
@@ -46,9 +55,11 @@ const PlaylistTrackContainer = () => {
       {playlistTrack?.map((data) => {
         return (
           <MusicTrack
+            key={data?.track.id}
             images={data?.track?.album.images?.[0]?.url}
             trackName={data?.track?.name}
-            id={data?.id}
+            id={data?.track.id}
+            handleDeleteTrack={handleDeleteOne}
           />
         );
       })}

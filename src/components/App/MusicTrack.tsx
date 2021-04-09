@@ -8,10 +8,17 @@ interface IPMusicTrack {
   id: string;
   images: string;
   trackName: string;
+  handleDeleteTrack: (id: string) => void;
 }
 
 const MusicTrack: React.FC<IPMusicTrack> = (data) => {
   const [musicModalActive, setMusicModalActive] = useState(false);
+
+  const handleConfirmation = () => {
+    setMusicModalActive(false);
+    data.handleDeleteTrack(data?.id);
+  };
+
   return (
     <Flex
       border="1px"
@@ -42,6 +49,7 @@ const MusicTrack: React.FC<IPMusicTrack> = (data) => {
       <SingleMusicModal
         isOpen={musicModalActive}
         onClose={() => setMusicModalActive(false)}
+        onDelete={handleConfirmation}
       />
     </Flex>
   );

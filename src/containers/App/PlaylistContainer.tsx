@@ -35,11 +35,10 @@ const PlaylistContainer = () => {
       <Stack marginY={4} spacing={6}>
         {spotifyPlaylist?.map((data) => {
           return (
-            <Link to={`/app/playlist/${data.id}`}>
+            <Link to={`/app/playlist/${data.id}`} key={data?.id}>
               <Flex
                 borderColor="light.primary"
                 border="1px"
-                key={data?.id}
                 padding={4}
                 alignItems="center"
                 transition="ease"
