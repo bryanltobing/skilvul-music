@@ -1,16 +1,16 @@
 import { Button } from '@chakra-ui/button';
-import { Image } from '@chakra-ui/image';
-import { Box, Flex, Stack, Text } from '@chakra-ui/layout';
+import { Stack } from '@chakra-ui/layout';
+import { MusicTrack } from 'components/App/MusicTrack';
 import { requestPlaylistTrack } from 'fetcher/spotify';
 import { history } from 'index';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 interface IParams {
   playlistId: string;
 }
 
-interface ITrack {
+export interface ITrack {
   name: string;
 
   album: {
@@ -22,7 +22,7 @@ interface ITrack {
   };
 }
 
-interface IPLaylistTrack {
+export interface IPLaylistTrack {
   track: ITrack;
   id: string;
 }
@@ -45,25 +45,11 @@ const PlaylistTrackContainer = () => {
       </Button>
       {playlistTrack?.map((data) => {
         return (
-          <Flex
-            border="1px"
-            key={data?.id}
-            padding={4}
-            alignItems="center"
-            transition="ease"
-            transitionDuration="0.5s"
-            cursor="pointer"
-            _hover={{
-              backgroundColor: 'white',
-              color: 'black',
-            }}
-            color="white"
-          >
-            <Box width="100px" height="100px" marginRight={10}>
-              <Image src={data.track?.album.images?.[0]?.url} width="full" />
-            </Box>
-            <Text fontSize="1.6rem">{data?.track?.name}</Text>
-          </Flex>
+          <MusicTrack
+            images={data?.track?.album.images?.[0]?.url}
+            trackName={data?.track?.name}
+            id={data?.id}
+          />
         );
       })}
     </Stack>
