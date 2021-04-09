@@ -1,8 +1,8 @@
-import { SpotifyLoginContainer } from 'containers/SpotifyLogin/SpotifyLoginContainer';
 import React from 'react';
+import { Routes } from 'routes/Routes';
 
 const App: React.FC = () => {
-  return <SpotifyLoginContainer />;
+  return <Routes />;
 };
 
 export { App };

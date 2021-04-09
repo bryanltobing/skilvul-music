@@ -10,7 +10,7 @@ const SpotifyLoginButton: React.FC<IPSpotifyLoginButton> = ({ onClick }) => {
   return (
     <Button
       onClick={onClick}
-      leftIcon={<GrSpotify fontSize={23} color="white" />}
+      leftIcon={<GrSpotify fontSize={23} color="light.primary" />}
       backgroundColor="green.primary"
       color="light.primary"
       borderRadius="500px"

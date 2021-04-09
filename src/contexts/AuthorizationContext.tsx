@@ -7,7 +7,11 @@ interface IAuthorizeInformation {
   token_type?: string;
 }
 
-const AuthorizationContext = React.createContext({});
+interface IAuthorizationContext {
+  authorizeInfoState?: IAuthorizeInformation;
+}
+
+const AuthorizationContext = React.createContext<IAuthorizationContext>({});
 
 const {
   access_token,
@@ -65,9 +69,7 @@ export const AuthorizationProvider: React.FC = ({ children }) => {
   }, [getAuthorizeInfoStorage]);
 
   return (
-    <AuthorizationContext.Provider
-      value={{ authorizeInfoState, setAuthorizeInfoState }}
-    >
+    <AuthorizationContext.Provider value={{ authorizeInfoState }}>
       {children}
     </AuthorizationContext.Provider>
   );
