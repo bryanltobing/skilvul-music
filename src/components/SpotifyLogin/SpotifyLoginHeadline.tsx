@@ -7,12 +7,12 @@ const SpotifyLoginHeadline: React.FC = () => {
     <Box maxWidth="800px" textAlign="center">
       <Fade in={true}>
         <Heading
-          fontSize="15.6rem"
+          fontSize={{ base: '5rem', md: '7rem', lg: '15.6rem' }}
           color="green.primary"
           transform="translate(125px, 0px);"
           style={{ textIndent: '-3.3em' }}
           paddingBottom="40px"
-          lineHeight="166px"
+          lineHeight={{ base: '80px', md: '40px', lg: '166px' }}
         >
           Listening is everything
         </Heading>
