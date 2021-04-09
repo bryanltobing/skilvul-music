@@ -2,9 +2,14 @@ import { Button } from '@chakra-ui/button';
 import React from 'react';
 import { GrSpotify } from 'react-icons/gr';
 
-const SpotifyLoginButton: React.FC = () => {
+interface IPSpotifyLoginButton {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const SpotifyLoginButton: React.FC<IPSpotifyLoginButton> = ({ onClick }) => {
   return (
     <Button
+      onClick={onClick}
       leftIcon={<GrSpotify fontSize={23} color="white" />}
       backgroundColor="green.primary"
       color="light.primary"
